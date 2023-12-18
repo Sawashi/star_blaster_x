@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Ground
   - Enemy
+  - DamageZone
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX
@@ -13,10 +16,10 @@ TagManager:
   - Water
   - UI
   - 
-  - 
   - Ground
-  - Player
   - Enemy
+  - 
+  - 
   - 
   - 
   - 
@@ -41,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Above
+    uniqueID: 2441464277
     locked: 0

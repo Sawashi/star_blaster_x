@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "star_blaster_x.sln"
+    "dotnet.defaultSolution": "bao.sln"
 }
