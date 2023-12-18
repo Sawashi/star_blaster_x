@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "bao.sln"
+    "dotnet.defaultSolution": "do_an_game.sln"
 }
