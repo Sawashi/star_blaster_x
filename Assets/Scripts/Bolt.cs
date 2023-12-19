@@ -17,33 +17,39 @@ public class Bolt : MonoBehaviour
         collider = GetComponent<CapsuleCollider2D>();
     }
 
-    public void Flip() {
+    public void Flip()
+    {
         Vector3 newScale = transform.localScale;
         newScale.x *= -1;
         transform.localScale = newScale;
     }
-    public void Launch(Vector2 dir, float force) {
+    public void Launch(Vector2 dir, float force)
+    {
         rigidbody.AddForce(dir * force, ForceMode2D.Impulse);
         StartCoroutine(CoDestroyTimer(timeToLive));
     }
 
-    public void DestroyBolt() {
+    public void DestroyBolt()
+    {
         Debug.Log("Destroy");
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
 
 
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Enemy") {
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Enemy")
+        {
             rigidbody.velocity = Vector2.zero;
             animator.SetBool("Hit", true);
             collider.enabled = false;
-            
+
         }
     }
 
-    IEnumerator CoDestroyTimer(float timer) {
+    IEnumerator CoDestroyTimer(float timer)
+    {
         yield return new WaitForSeconds(timer);
 
         rigidbody.velocity = Vector2.zero;
