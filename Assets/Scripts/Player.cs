@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
 
 
     public ArmShooting arm;
-    AudioSource audioSource;
 
 
     // Start is called before the first frame update
@@ -55,8 +54,7 @@ public class Player : MonoBehaviour
 
         if (isShooting && canShoot)
         {
-            audioSource = GetComponent<AudioSource>();
-            audioSource.Play();
+            AudioManager.Instance.PlaySFX("Player Shooting");
             arm.Shoot();
             StartCoroutine(CoFireDelay(shootCooldown));
         }

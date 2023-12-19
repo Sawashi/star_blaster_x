@@ -24,12 +24,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908673553314664192}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.187, y: 0.025, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.07599977, y: 0.014000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1093100802625826611}
+  m_Father: {fileID: 3592471542691240727}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2074288566772750855
 GameObject:
@@ -63,7 +63,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3592471542691240727}
-  - {fileID: 2662454458710438286}
   m_Father: {fileID: 2876493305734873427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2519782862057247635
@@ -143,6 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3592471542691240727}
   - component: {fileID: 5355904273951534719}
+  - component: {fileID: 5618171564785890952}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -162,7 +162,8 @@ Transform:
   m_LocalPosition: {x: 0.111, y: 0.011, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 2662454458710438286}
   m_Father: {fileID: 1093100802625826611}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5355904273951534719
@@ -217,6 +218,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5618171564785890952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4698255343632882537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f8bc9c676af994f86c7f87da173f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingPoint: {fileID: 1908673553314664192}
+  renderer: {fileID: 0}
+  projectileSpeed: 5
+  ammo: {fileID: 3095630482190447641, guid: e0601db3e46cb9b40bb489796568e3ab, type: 3}
 --- !u!1 &6133130344023792203
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,6 @@ public class Bomber : Enemy
     private Rigidbody2D rigidbody;
     private Player player;
     private bool canMove = true;
-    public AudioSource audioSource;
 
 
     // Start is called before the first frame update
@@ -77,13 +76,15 @@ public class Bomber : Enemy
         }
     }
 
+    public void PlaySound() {
+        AudioManager.Instance.PlaySFX("Enemy Death");
+    }
+
     public override void Die()
     {
         hitbox.enabled = false;
         animator.SetBool("Dead", true);
         animator.SetTrigger("Hurt");
-        audioSource = GetComponent<AudioSource>();
-        audioSource.Play(2000);
     }
 
     public override void DestroyEnemy()

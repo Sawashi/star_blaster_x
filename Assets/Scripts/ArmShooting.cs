@@ -9,17 +9,15 @@ public class ArmShooting : MonoBehaviour
     private Vector2 aimDir;
     private Renderer armRenderer;
     private Player player;
-    private Renderer gunRenderer;
-    [SerializeField] private GameObject shootingPoint;
-    public float projectileSpeed = 5f;
-    public Bolt ammo;
+    private Weapon gun;
+
 
     // Start is called before the first frame update
     void Start()
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         armRenderer = GetComponent<Renderer>();
-        gunRenderer = transform.GetChild(0).transform.GetComponent<Renderer>();
+        gun = transform.GetChild(0).transform.GetComponent<Weapon>();
         player = GetComponentInParent<Player>();
     }
 
@@ -40,12 +38,12 @@ public class ArmShooting : MonoBehaviour
             if (player.isFacingRight)
             {
                 armRenderer.sortingOrder = 2;
-                gunRenderer.sortingOrder = 1;
+                gun.renderer.sortingOrder = 1;
             }
             else
             {
                 armRenderer.sortingOrder = -1;
-                gunRenderer.sortingOrder = 0;
+                gun.renderer.sortingOrder = 0;
             }
 
         }
@@ -56,26 +54,18 @@ public class ArmShooting : MonoBehaviour
             if (player.isFacingRight)
             {
                 armRenderer.sortingOrder = -1;
-                gunRenderer.sortingOrder = 0;
+                gun.renderer.sortingOrder = 0;
             }
             else
             {
                 armRenderer.sortingOrder = 2;
-                gunRenderer.sortingOrder = 1;
+                gun.renderer.sortingOrder = 1;
             }
 
         }
     }
 
-    public void Shoot()
-    {
-        Quaternion rot = transform.rotation;
-
-        Bolt bullet = Instantiate<Bolt>(ammo, shootingPoint.transform.position, rot);
-        if (aimDir.x > 0)
-        {
-            bullet.Flip();
-        }
-        bullet.Launch(aimDir, projectileSpeed);
+    public void Shoot() {
+        gun.Shoot(aimDir, transform.rotation);
     }
 }
