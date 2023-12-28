@@ -9,17 +9,18 @@ public class Player : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rigidbody;
     private bool isRunning = false;
-    private bool isShooting = false;
-    private bool canShoot = true;
 
     public bool isFacingRight = true;
     public bool isFalling = false;
+    public bool isShooting = false;
 
-    public float shootCooldown = 0.3f;
     public Vector2 boxSize;
     public float raycastDistance;
     public LayerMask groundLayer;
-    public LayerMask platformLayer;
+
+    public Vector2 pickupSize;
+    public float pickupDistance;
+    public LayerMask pickupLayer;
 
 
     public ArmShooting arm;
@@ -52,11 +53,9 @@ public class Player : MonoBehaviour
             animator.SetBool("isFalling", true);
         }
 
-        if (isShooting && canShoot)
+        if (isShooting)
         {
-            AudioManager.Instance.PlaySFX("Player Shooting");
             arm.Shoot();
-            StartCoroutine(CoFireDelay(shootCooldown));
         }
 
     }
@@ -92,6 +91,8 @@ public class Player : MonoBehaviour
 
     }
 
+    
+
     public bool IsGrounded()
     {
         if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, raycastDistance, groundLayer))
@@ -112,14 +113,10 @@ public class Player : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position - transform.up * raycastDistance, boxSize);
+        Gizmos.DrawWireCube(transform.position - transform.up * pickupDistance, pickupSize);
     }
 
-    IEnumerator CoFireDelay(float timer)
-    {
-        canShoot = false;
-        yield return new WaitForSeconds(timer);
-        canShoot = true;
-    }
+
 
     public void Movement(InputAction.CallbackContext context)
     {
@@ -177,6 +174,24 @@ public class Player : MonoBehaviour
         if (context.canceled)
         {
             isShooting = false;
+            arm.StopShooting();
         }
     }
+
+    public void Interact(InputAction.CallbackContext context) {
+        if (context.started) {
+            Debug.Log("Interact");
+
+            RaycastHit2D hit = Physics2D.BoxCast(transform.position, pickupSize, 0, -transform.up, pickupDistance, pickupLayer);
+            if(hit.collider != null) {
+                GunPickup pickup = hit.collider.GetComponent<GunPickup>();
+                arm.SwitchWeapon(pickup.GetWeapon());
+                pickup.DestroyPickup();
+            }
+
+        }
+
+       
+    }
+
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArmShooting : MonoBehaviour
 {
-
+    [SerializeField] private GameObject gunSpawnpoint;
     private Camera cam;
     private Vector2 aimDir;
     private Renderer armRenderer;
@@ -17,7 +17,7 @@ public class ArmShooting : MonoBehaviour
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         armRenderer = GetComponent<Renderer>();
-        gun = transform.GetChild(0).transform.GetComponent<Weapon>();
+        gun = gunSpawnpoint.transform.GetComponentInChildren<Weapon>();
         player = GetComponentInParent<Player>();
     }
 
@@ -65,7 +65,22 @@ public class ArmShooting : MonoBehaviour
         }
     }
 
+    public void SwitchWeapon(Weapon newWeapon) {
+
+        Instantiate<GunPickup>(gun.GetPickup(), player.transform.position, Quaternion.identity);
+        Destroy(gun.gameObject);
+
+
+
+        Weapon newGun = Instantiate<Weapon>(newWeapon, gunSpawnpoint.transform, false);
+        gun = newGun;
+    }
+
     public void Shoot() {
         gun.Shoot(aimDir, transform.rotation);
+    }
+
+    public void StopShooting() {
+        gun.Stop();
     }
 }

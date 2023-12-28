@@ -9,11 +9,12 @@ public class Bomber : Enemy
     [SerializeField] private DetectPlayer detectRange;
     [SerializeField] private CircleCollider2D damageZone;
     private CircleCollider2D hitbox;
-    public Animator animator;
+    private Animator animator;
     private Rigidbody2D rigidbody;
     private Player player;
     private bool canMove = true;
-
+    private SpriteRenderer renderer;
+    private DamageFlash flash;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,8 @@ public class Bomber : Enemy
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        renderer = GetComponent<SpriteRenderer>();
+        flash = GetComponent<DamageFlash>();
     }
 
     // Update is called once per frame
@@ -68,7 +71,7 @@ public class Bomber : Enemy
         health -= 1;
         if (health > 0)
         {
-            animator.SetTrigger("Hurt");
+            flash.Flash();
         }
         else
         {
@@ -83,6 +86,8 @@ public class Bomber : Enemy
     public override void Die()
     {
         hitbox.enabled = false;
+        renderer.color = Color.white;
+
         animator.SetBool("Dead", true);
         animator.SetTrigger("Hurt");
     }
