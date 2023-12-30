@@ -129,9 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f014f80789bb874abc8897045f3a28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingPoint: {fileID: 1908673553314664192}
-  projectileSpeed: 5
-  ammo: {fileID: 3095630482190447641, guid: e0601db3e46cb9b40bb489796568e3ab, type: 3}
 --- !u!1 &4698255343632882537
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +367,7 @@ Transform:
   m_GameObject: {fileID: 8765374039865979945}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.32, y: -0.81, z: 0}
+  m_LocalPosition: {x: -10.966474, y: -0.38534087, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
