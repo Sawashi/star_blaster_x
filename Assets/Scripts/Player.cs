@@ -20,16 +20,19 @@ public class Player : MonoBehaviour
     public float raycastDistance;
     public LayerMask groundLayer;
     public LayerMask platformLayer;
-
-
+    public int maxHealth = 100;
+    public int currentHealth;
+    public HealthBar healthBar;
     public ArmShooting arm;
-
+   
 
     // Start is called before the first frame update
     void Start()
     {
         animator = transform.GetChild(0).GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -58,9 +61,13 @@ public class Player : MonoBehaviour
             arm.Shoot();
             StartCoroutine(CoFireDelay(shootCooldown));
         }
-
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            TakeDamage(10);
+            
+        }
     }
-
+    
 
     private void FixedUpdate()
     {
@@ -178,5 +185,10 @@ public class Player : MonoBehaviour
         {
             isShooting = false;
         }
+    }
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
 }
