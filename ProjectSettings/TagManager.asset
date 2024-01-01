@@ -20,9 +20,9 @@ TagManager:
   - Background
   - Ground
   - Enemy
-  - 
-  - 
-  - 
+  - GunPickup
+  - Player
+  - Health
   - 
   - 
   - 
