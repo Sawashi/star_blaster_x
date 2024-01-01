@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -57,7 +56,6 @@ public class ScrewDriverController : MonoBehaviour
 
         // get player object - used for distance check
         player = GameObject.FindGameObjectWithTag("Player");
-        Console.WriteLine("Player: " + player);
     }
 
     // Update is called once per frame
@@ -86,7 +84,6 @@ public class ScrewDriverController : MonoBehaviour
                     if (player != null && !doAttack)
                     {
                         float distance = Vector2.Distance(transform.position, playerPosition);
-                        Console.WriteLine("Distance: " + distance);
                         if (distance <= playerRange)
                         {
                             doAttack = true;

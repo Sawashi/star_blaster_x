@@ -285,13 +285,13 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        // check for collision with player
-        if (other.gameObject.CompareTag("Player"))
-        {
-            // colliding with player inflicts damage and takes contact damage away from health
-            //PlayerController player = other.gameObject.GetComponent<PlayerController>();
-            // player.HitSide(transform.position.x > player.transform.position.x);
-            // player.TakeDamage(this.contactDamage);
-        }
+        // // check for collision with player
+        // if (other.gameObject.CompareTag("Player"))
+        // {
+        //     // colliding with player inflicts damage and takes contact damage away from health
+        //     PlayerController player = other.gameObject.GetComponent<PlayerController>();
+        //     player.HitSide(transform.position.x > player.transform.position.x);
+        //     player.TakeDamage(this.contactDamage);
+        // }
     }
 }
