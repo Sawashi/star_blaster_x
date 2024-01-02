@@ -11,35 +11,43 @@ public class IceShot : Bullet
     {
 
 
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Enemy") {
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Enemy")
+        {
             rigidbody.velocity = Vector2.zero;
             animator.SetBool("Hit", true);
             collider.enabled = false;
 
-            if (collision.gameObject.tag == "Enemy") {
+            if (collision.gameObject.tag == "Enemy")
+            {
                 Enemy enemy = collision.GetComponent<Enemy>();
-                if(enemy != null) {
+                if (enemy != null)
+                {
                     StatusEffect stsScript = enemy.GetComponent<StatusEffect>();
-                    if (stsScript != null) {
+                    if (stsScript != null)
+                    {
                         stsScript.Slow();
                     }
                     enemy.Hit();
-                } else {
-                    Enemy enemy = collision.transform.parent.GetComponent<Enemy>();
-                    if (enemy != null) {
+                }
+                else
+                {
+                    Enemy enemy1 = collision.transform.parent.GetComponent<Enemy>();
+                    if (enemy != null)
+                    {
                         StatusEffect stsScript = enemy.GetComponent<StatusEffect>();
-                        if (stsScript != null) {
+                        if (stsScript != null)
+                        {
                             stsScript.Slow();
                         }
                         enemy.Hit();
                     }
-               
 
+
+
+                }
 
             }
-
         }
-    }
 
-    
+    }
 }
