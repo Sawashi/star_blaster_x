@@ -9,17 +9,19 @@ public class Player : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rigidbody;
     private bool isRunning = false;
-    private bool isShooting = false;
-    private bool canShoot = true;
 
+    private bool isShooting = false;
     public bool isFacingRight = true;
     public bool isFalling = false;
 
-    public float shootCooldown = 0.3f;
     public Vector2 boxSize;
     public float raycastDistance;
     public LayerMask groundLayer;
-    public LayerMask platformLayer;
+
+    public Vector2 pickupSize;
+    public float pickupDistance;
+    public LayerMask pickupLayer;
+
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
@@ -38,30 +40,21 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rigidbody.velocity.y < 0.1)
-        {
+        if (rigidbody.velocity.y < 0.1) {
             isFalling = true;
-        }
-        else
-        {
+        } else {
             isFalling = false;
         }
-        if (IsGrounded())
-        {
+        if (IsGrounded()) {
             animator.SetBool("isFalling", false);
-        }
-        else
-        {
+        } else {
             animator.SetBool("isFalling", true);
         }
 
-        if (isShooting && canShoot)
-        {
-            AudioManager.Instance.PlaySFX("Player Shooting");
+        if (isShooting) {
             arm.Shoot();
-            StartCoroutine(CoFireDelay(shootCooldown));
         }
-        if(Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             TakeDamage(10);
             
@@ -121,39 +114,25 @@ public class Player : MonoBehaviour
         Gizmos.DrawWireCube(transform.position - transform.up * raycastDistance, boxSize);
     }
 
-    IEnumerator CoFireDelay(float timer)
-    {
-        canShoot = false;
-        yield return new WaitForSeconds(timer);
-        canShoot = true;
-    }
 
-    public void Movement(InputAction.CallbackContext context)
-    {
+    public void Movement(InputAction.CallbackContext context) {
         float val = context.ReadValue<float>();
-        if (val == 0)
-        {
+        if (val == 0) {
             isRunning = false;
             animator.SetBool("isRunning", isRunning);
-        }
-        else
-        {
+        } else {
             isRunning = true;
             animator.SetBool("isRunning", isRunning);
-            if (val < 0)
-            {
-                if (isFacingRight)
-                {
+            if (val < 0) {
+                if (isFacingRight) {
                     transform.rotation = Quaternion.Euler(0, 180, 0);
                 }
                 isFacingRight = false;
 
             }
 
-            if (val > 0)
-            {
-                if (!isFacingRight)
-                {
+            if (val > 0) {
+                if (!isFacingRight) {
                     transform.rotation = Quaternion.Euler(0, 0, 0);
 
                 }
@@ -163,10 +142,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Jump(InputAction.CallbackContext context)
-    {
-        if (context.performed && IsGrounded())
-        {
+    public void Jump(InputAction.CallbackContext context) {
+        if (context.performed && IsGrounded()) {
             Vector2 dir = rigidbody.velocity;
             dir.y = 5;
             rigidbody.velocity = dir;
@@ -174,17 +151,31 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Shoot(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
+    public void Shoot(InputAction.CallbackContext context) {
+        if (context.started) {
             isShooting = true;
         }
 
-        if (context.canceled)
-        {
+        if (context.canceled) {
             isShooting = false;
+            arm.StopShooting();
         }
+    }
+
+    public void Interact(InputAction.CallbackContext context) {
+        if (context.started) {
+            Debug.Log("Interact");
+
+            RaycastHit2D hit = Physics2D.BoxCast(transform.position, pickupSize, 0, -transform.up, pickupDistance, pickupLayer);
+            if (hit.collider != null) {
+                GunPickup pickup = hit.collider.GetComponent<GunPickup>();
+                arm.SwitchWeapon(pickup.GetWeapon());
+                pickup.DestroyPickup();
+            }
+
+        }
+
+
     }
     void TakeDamage(int damage)
     {
