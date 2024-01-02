@@ -76,7 +76,8 @@ public class Bomber : Enemy
         }
     }
 
-    public void PlaySound() {
+    public void PlaySound()
+    {
         AudioManager.Instance.PlaySFX("Enemy Death");
     }
 

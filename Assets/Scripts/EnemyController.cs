@@ -125,6 +125,7 @@ public class EnemyController : MonoBehaviour
         // take damage if not invincible
         if (!isInvincible || ignoreInvincibility)
         {
+            Debug.Log("Current Health: " + currentHealth + " Damage: " + damage);
             // take damage amount from health and call defeat if no health
             if (damage > 0)
             {
@@ -199,27 +200,27 @@ public class EnemyController : MonoBehaviour
         explodeEffect.transform.position = sprite.bounds.center;
         explodeEffect.GetComponent<ExplosionScript>().SetDamageValue(this.explosionDamage);
         explodeEffect.GetComponent<ExplosionScript>().SetDestroyDelay(explodeEffectDestroyDelay);
-
-        // get the bonus item prefab
-        GameObject bonusItemPrefab = GameManager.Instance.GetBonusItem(bonusItemType);
-        if (bonusItemPrefab != null)
-        {
-            // instantiate the bonus item
-            GameObject bonusItem = Instantiate(bonusItemPrefab);
-            bonusItem.name = bonusItemPrefab.name;
-            bonusItem.transform.position = explodeEffect.transform.position;
-            bonusItem.GetComponent<ItemScript>().Animate(true);
-            bonusItem.GetComponent<ItemScript>().SetDestroyDelay(bonusDestroyDelay);
-            bonusItem.GetComponent<ItemScript>().SetBonusBallColor(bonusBallColor);
-            bonusItem.GetComponent<ItemScript>().SetWeaponPartColor(weaponPartColor);
-            if (BonusItemAction != null)
-            {
-                // add bonus item action(s) to event
-                bonusItem.GetComponent<ItemScript>().BonusItemEvent.AddListener(BonusItemAction);
-            }
-            // give the bonus item a bounce effect
-            bonusItem.GetComponent<Rigidbody2D>().velocity = bonusVelocity;
-        }
+        Destroy(gameObject);
+        // // get the bonus item prefab
+        // GameObject bonusItemPrefab = GameManager.Instance.GetBonusItem(bonusItemType);
+        // if (bonusItemPrefab != null)
+        // {
+        //     // instantiate the bonus item
+        //     GameObject bonusItem = Instantiate(bonusItemPrefab);
+        //     bonusItem.name = bonusItemPrefab.name;
+        //     bonusItem.transform.position = explodeEffect.transform.position;
+        //     bonusItem.GetComponent<ItemScript>().Animate(true);
+        //     bonusItem.GetComponent<ItemScript>().SetDestroyDelay(bonusDestroyDelay);
+        //     bonusItem.GetComponent<ItemScript>().SetBonusBallColor(bonusBallColor);
+        //     bonusItem.GetComponent<ItemScript>().SetWeaponPartColor(weaponPartColor);
+        //     if (BonusItemAction != null)
+        //     {
+        //         // add bonus item action(s) to event
+        //         bonusItem.GetComponent<ItemScript>().BonusItemEvent.AddListener(BonusItemAction);
+        //     }
+        //     // give the bonus item a bounce effect
+        //     bonusItem.GetComponent<Rigidbody2D>().velocity = bonusVelocity;
+        // }
     }
 
     void StopDefeatAnimation()
@@ -234,8 +235,8 @@ public class EnemyController : MonoBehaviour
         DefeatEvent.Invoke();
         // play explosion animation, remove enemy, give player score points
         StartDefeatAnimation();
-        Destroy(gameObject);
-        GameManager.Instance.AddScorePoints(this.scorePoints);
+
+        //GameManager.Instance.AddScorePoints(this.scorePoints);
     }
 
     public void FreezeEnemy(bool freeze)
@@ -289,9 +290,14 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             // colliding with player inflicts damage and takes contact damage away from health
-            //PlayerController player = other.gameObject.GetComponent<PlayerController>();
-            // player.HitSide(transform.position.x > player.transform.position.x);
-            // player.TakeDamage(this.contactDamage);
+            PlayerController player = other.gameObject.GetComponent<PlayerController>();
+            player.HitSide(transform.position.x > player.transform.position.x);
+            player.TakeDamage(this.contactDamage);
         }
+    }
+    //detect collision
+    public void takeEnemyHealth(int damage, string damageName)
+    {
+        this.TakeDamage(damage, damageName);
     }
 }

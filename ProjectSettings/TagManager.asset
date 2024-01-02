@@ -10,6 +10,10 @@ TagManager:
   - PlayerAttack
   - Bullet
   - Explosion
+  - Ladder
+  - PlatformBeam
+  - Bomb
+  - NewEnemy
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +29,7 @@ public class ScrewDriverController : MonoBehaviour
     public enum ScrewDriverColors { Blue, Orange };
     [SerializeField] ScrewDriverColors screwDriverColor = ScrewDriverColors.Blue;
 
-    public enum ScrewDriverState { Closed, Open };
+    public enum ScrewDriverState { Closed, Open, Dead };
     [SerializeField] ScrewDriverState screwDriverState = ScrewDriverState.Closed;
 
     public enum ScrewDriverOrientation { Bottom, Top, Left, Right };
@@ -57,7 +56,6 @@ public class ScrewDriverController : MonoBehaviour
 
         // get player object - used for distance check
         player = GameObject.FindGameObjectWithTag("Player");
-        Console.WriteLine("Player: " + player);
     }
 
     // Update is called once per frame
@@ -86,7 +84,6 @@ public class ScrewDriverController : MonoBehaviour
                     if (player != null && !doAttack)
                     {
                         float distance = Vector2.Distance(transform.position, playerPosition);
-                        Console.WriteLine("Distance: " + distance);
                         if (distance <= playerRange)
                         {
                             doAttack = true;
@@ -109,6 +106,9 @@ public class ScrewDriverController : MonoBehaviour
                 case ScrewDriverState.Open:
                     // firing of the bullets is performed via animation events calling ShootBullet() 
                     animator.Play("ScrewDriver_Open");
+                    break;
+                case ScrewDriverState.Dead:
+                    animator.Play("Explode");
                     break;
             }
         }
