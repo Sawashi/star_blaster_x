@@ -460,7 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423de7097e3e8074c9b9e05dc374a9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableAI: 0
+  enableAI: 1
   handPos: {fileID: 3204241937059166714}
   bombPrefab: {fileID: 1450578672518095043, guid: 3c015f477e1c91a438819af9b98f5b5a, type: 3}
   damageSprite: {fileID: 7920530694664228132}
