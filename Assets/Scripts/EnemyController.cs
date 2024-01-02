@@ -201,26 +201,6 @@ public class EnemyController : MonoBehaviour
         explodeEffect.GetComponent<ExplosionScript>().SetDamageValue(this.explosionDamage);
         explodeEffect.GetComponent<ExplosionScript>().SetDestroyDelay(explodeEffectDestroyDelay);
         Destroy(gameObject);
-        // // get the bonus item prefab
-        // GameObject bonusItemPrefab = GameManager.Instance.GetBonusItem(bonusItemType);
-        // if (bonusItemPrefab != null)
-        // {
-        //     // instantiate the bonus item
-        //     GameObject bonusItem = Instantiate(bonusItemPrefab);
-        //     bonusItem.name = bonusItemPrefab.name;
-        //     bonusItem.transform.position = explodeEffect.transform.position;
-        //     bonusItem.GetComponent<ItemScript>().Animate(true);
-        //     bonusItem.GetComponent<ItemScript>().SetDestroyDelay(bonusDestroyDelay);
-        //     bonusItem.GetComponent<ItemScript>().SetBonusBallColor(bonusBallColor);
-        //     bonusItem.GetComponent<ItemScript>().SetWeaponPartColor(weaponPartColor);
-        //     if (BonusItemAction != null)
-        //     {
-        //         // add bonus item action(s) to event
-        //         bonusItem.GetComponent<ItemScript>().BonusItemEvent.AddListener(BonusItemAction);
-        //     }
-        //     // give the bonus item a bounce effect
-        //     bonusItem.GetComponent<Rigidbody2D>().velocity = bonusVelocity;
-        // }
     }
 
     void StopDefeatAnimation()
