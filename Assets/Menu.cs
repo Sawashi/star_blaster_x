@@ -7,7 +7,7 @@ public class Menu : MonoBehaviour
     // Start is called before the first frame update
     public void PlayGame()
     {
-        SceneManager.LoadScene("Map 2");
+        SceneManager.LoadScene("LevelSelect");
     }
     public void QuitGame()
     {
