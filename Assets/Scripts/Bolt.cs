@@ -17,7 +17,7 @@ public class Bolt : Bullet
                 Enemy enemy = collision.transform.parent.GetComponent<Enemy>();
                 if (enemy != null)
                 {
-                    enemy.Hit();
+                    enemy.Hit(damage);
                 }
             }
         }

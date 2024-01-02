@@ -66,9 +66,9 @@ public class Bomber : Enemy
         damageZone.enabled = false;
     }
 
-    public override void Hit()
+    public override void Hit(float damage)
     {
-        health -= 1;
+        health -= damage;
         if (health > 0)
         {
             flash.Flash();

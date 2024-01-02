@@ -4,27 +4,37 @@ using UnityEngine;
 
 public class StatusEffect : MonoBehaviour {
     Enemy enemy;
+    EnemyController enemyController;
     SpriteRenderer renderer;
     float originalSpeed;
     float slowTimer;
-    float slowMaxDuration = 2;
+    float slowMaxDuration = 1;
+    bool isMegamanEnemy;
     Color originalColor;
     void Start() {
         enemy = GetComponent<Enemy>();
-        if(enemy != null) {
+        enemyController = GetComponent<EnemyController>();
+        renderer = GetComponent<SpriteRenderer>();
+        originalColor = renderer.color;
+
+        if (enemy != null) {
             originalSpeed = enemy.speed;
-            renderer = GetComponent<SpriteRenderer>();
-            originalColor = renderer.color;
+            isMegamanEnemy = false;
+        } else if(enemyController != null) {
+            isMegamanEnemy = true;
         } else {
             enabled = false;
         }
     }
 
     public void Slow() {
-        enemy.speed = originalSpeed / 2;
+        if (isMegamanEnemy) {
+            enemyController.FreezeEnemy(true);
+        } else {
+            enemy.speed = originalSpeed / 2;
+        }
         slowTimer = slowMaxDuration;
         renderer.color = Color.blue;
-        Debug.Log("Slow");
     }
 
     private void Update() {
@@ -32,8 +42,12 @@ public class StatusEffect : MonoBehaviour {
             slowTimer -= Time.deltaTime;
         } else if (slowTimer < 0) {
             slowTimer = 0;
-            enemy.speed = originalSpeed;
             renderer.color = originalColor;
+            if (isMegamanEnemy) {
+                enemyController.FreezeEnemy(false);
+            } else {
+                enemy.speed = originalSpeed;
+            }
         }
     }
 

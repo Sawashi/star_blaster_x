@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 5172626501654380735}
   m_Layer: 10
   m_Name: SniperJoe
-  m_TagString: Enemy
+  m_TagString: NewEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 5172626502671894519}
   m_Layer: 0
   m_Name: HitBox
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

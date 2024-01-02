@@ -12,7 +12,7 @@ public class LaserShot : Bullet {
         if (collision.gameObject.tag == "Enemy") {
             Enemy enemy = collision.transform.parent.GetComponent<Enemy>();
             if (enemy != null) {
-                enemy.Hit();
+                enemy.Hit(damage);
 
             }
 
