@@ -526,6 +526,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f1623f1a608a134b91fa6eb0f148389, type: 3}
+--- !u!114 &421007859 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9180842349432464891, guid: d2a26dee02a63674a95137f1c8bc5e5c, type: 3}
+  m_PrefabInstance: {fileID: 972960594251400033}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 484d918fef42ad24da69d15e9e8825a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &431621159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6067,7 +6078,7 @@ PrefabInstance:
     - target: {fileID: 5185243516700977525, guid: 19f7f49d5ee40e6459d01592bbf73de4, type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 421007859}
     - target: {fileID: 5185243516700977525, guid: 19f7f49d5ee40e6459d01592bbf73de4, type: 3}
       propertyPath: isFalling
       value: 0
