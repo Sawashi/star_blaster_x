@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 5129105878987275217}
   - component: {fileID: 2930296317705649165}
   - component: {fileID: 654983178875354299}
+  - component: {fileID: 334052161186622760}
   m_Layer: 0
   m_Name: Bomber
   m_TagString: Untagged
@@ -190,7 +191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6381486683689818354}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.15, y: -0.94, z: -0.020363336}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -319,7 +320,18 @@ MonoBehaviour:
   detectRange: {fileID: 2674120514544691305}
   damageZone: {fileID: 3063474337044986952}
   animator: {fileID: 0}
-  audioSource: {fileID: 0}
+--- !u!114 &334052161186622760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6381486683689818354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc61e505da0fa341bed9e69a09e8d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7118092046445567073
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +409,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3751179420497928848}
   - component: {fileID: 5124940305813250420}
-  - component: {fileID: 6176386679272774321}
   m_Layer: 0
   m_Name: HitBox
   m_TagString: Enemy
@@ -455,16 +466,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &6176386679272774321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7127327792841836569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652c1adae5663654194f8d59f2592c02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bomber: {fileID: 654983178875354299}

@@ -11,7 +11,8 @@ public class AudioManager : MonoBehaviour {
     public Sound[] musicSounds, sfxSounds;
 
     private void Awake() {
-        if(Instance == null) {
+
+        if (Instance == null) {
             Instance = this;
             DontDestroyOnLoad(gameObject);
         } else {
