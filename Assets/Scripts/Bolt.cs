@@ -37,14 +37,18 @@ public class Bolt : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-
         if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Enemy")
         {
             rigidbody.velocity = Vector2.zero;
             animator.SetBool("Hit", true);
             collider.enabled = false;
-
+        }
+        if (collision.gameObject.tag == "NewEnemy")
+        {
+            rigidbody.velocity = Vector2.zero;
+            animator.SetBool("Hit", true);
+            collision.gameObject.GetComponent<EnemyController>().takeEnemyHealth(1, "Bolt");
+            collider.enabled = false;
         }
     }
 
