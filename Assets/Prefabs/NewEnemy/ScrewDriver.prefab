@@ -92,6 +92,8 @@ GameObject:
   - component: {fileID: 2552945720702350255}
   - component: {fileID: 6623868291208415258}
   - component: {fileID: 8414655626434467273}
+  - component: {fileID: 4464572319220628102}
+  - component: {fileID: 7817770453280989976}
   m_Layer: 10
   m_Name: ScrewDriver
   m_TagString: NewEnemy
@@ -322,6 +324,35 @@ MonoBehaviour:
   screwDriverOrientation: 0
   racScrewDriverBlue: {fileID: 22100000, guid: c879b924db91c4344b8a5f9fb53180e9, type: 2}
   racScrewDriverOrange: {fileID: 22100000, guid: 1ae4244691c09214a93c9c2378a9d007, type: 2}
+--- !u!114 &4464572319220628102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2573677490510418744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d5886cd2c71354cba05d3be04f9ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 0179a7fa86396394cad671b078e45bc0, type: 2}
+  duration: 0.1
+  playerDuration: 0.5
+  isPlayer: 0
+  renderer: {fileID: 2552945720702350255}
+--- !u!114 &7817770453280989976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2573677490510418744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc61e505da0fa341bed9e69a09e8d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6773754982178596131
 GameObject:
   m_ObjectHideFlags: 0

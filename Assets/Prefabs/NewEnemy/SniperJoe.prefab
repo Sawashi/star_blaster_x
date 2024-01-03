@@ -46,6 +46,8 @@ GameObject:
   - component: {fileID: 5172626501654380708}
   - component: {fileID: 5172626501654380709}
   - component: {fileID: 5172626501654380735}
+  - component: {fileID: 3675224556150972143}
+  - component: {fileID: 3649779313781170517}
   m_Layer: 10
   m_Name: SniperJoe
   m_TagString: NewEnemy
@@ -273,6 +275,35 @@ MonoBehaviour:
   jumpingVectors:
   - {x: 0, y: 3.7}
   - {x: 1.5, y: 3.7}
+--- !u!114 &3675224556150972143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5172626501654380710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d5886cd2c71354cba05d3be04f9ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 0179a7fa86396394cad671b078e45bc0, type: 2}
+  duration: 0.1
+  playerDuration: 0.5
+  isPlayer: 0
+  renderer: {fileID: 5172626501654380708}
+--- !u!114 &3649779313781170517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5172626501654380710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc61e505da0fa341bed9e69a09e8d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5172626502671894513
 GameObject:
   m_ObjectHideFlags: 0

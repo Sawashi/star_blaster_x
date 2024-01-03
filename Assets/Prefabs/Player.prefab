@@ -250,6 +250,7 @@ GameObject:
   - component: {fileID: 5185243516700977525}
   - component: {fileID: 845577112917608645}
   - component: {fileID: 2289139603282946715}
+  - component: {fileID: 6266532288246295161}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -313,9 +314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a20276e56a8a9449f68a07afd65638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathParticle: {fileID: 9021928921821271609, guid: f9680cdf2abe3724bb1d51cb8628764d, type: 3}
   isFacingRight: 1
   isFalling: 0
-  isShooting: 0
   boxSize: {x: 0.05, y: 0.05}
   raycastDistance: 0.3
   groundLayer:
@@ -326,6 +327,10 @@ MonoBehaviour:
   pickupLayer:
     serializedVersion: 2
     m_Bits: 512
+  maxHealth: 100
+  currentHealth: 100
+  invincibleDuration: 0.5
+  healthBar: {fileID: 0}
   arm: {fileID: 8124078181689893443}
 --- !u!114 &845577112917608645
 MonoBehaviour:
@@ -456,6 +461,23 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.1, y: 0.3}
   m_Direction: 0
+--- !u!114 &6266532288246295161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8765374039865979945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d5886cd2c71354cba05d3be04f9ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 0179a7fa86396394cad671b078e45bc0, type: 2}
+  duration: 0.1
+  playerDuration: 0.5
+  isPlayer: 1
+  renderer: {fileID: 906251232270651946}
 --- !u!1001 &1049909778286762803
 PrefabInstance:
   m_ObjectHideFlags: 0

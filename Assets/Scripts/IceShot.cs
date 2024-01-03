@@ -25,11 +25,14 @@ public class IceShot : Bullet {
                     enemy.Hit(damage);
                 } else {
                     EnemyController e = collision.transform.parent.GetComponent<EnemyController>();
-                    StatusEffect sts = e.GetComponent<StatusEffect>();
-                    if (sts != null) {
-                        sts.Slow();
-                    }
-                    e.TakeDamage((int) damage);
+					if(e != null){
+						StatusEffect sts = e.GetComponent<StatusEffect>();
+						if (sts != null) {
+							sts.Slow();
+						}
+						e.TakeDamage((int) damage);
+					}
+                    
                 }
 
 
