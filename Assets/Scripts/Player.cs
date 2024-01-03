@@ -215,9 +215,20 @@ public class Player : MonoBehaviour
 
     }
 
+    //Heal
+    public void Heal(int healAmount)
+    {
+        currentHealth += healAmount;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        healthBar.SetHealth(currentHealth);
+    }
+
     public void TakeDamage(int damage)
     {
-        Debug.Log("Current health - damage: " + currentHealth + " - " + damage);
+        //Debug.Log("Current health - damage: " + currentHealth + " - " + damage);
         if (isInvincible) return;
         currentHealth -= damage;
         if (currentHealth > 0)
