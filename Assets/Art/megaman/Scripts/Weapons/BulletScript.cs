@@ -181,10 +181,10 @@ public class BulletScript : MonoBehaviour
                         break;
                     case "Player":
                         // player controller will apply the damage enemy bullet can cause
-                        PlayerController player = other.gameObject.GetComponent<PlayerController>();
+                        Player player = other.gameObject.GetComponent<Player>();
                         if (player != null)
                         {
-                            player.HitSide(transform.position.x > player.transform.position.x);
+                           // player.HitSide(transform.position.x > player.transform.position.x);
                             player.TakeDamage(this.damage);
                         }
                         break;
