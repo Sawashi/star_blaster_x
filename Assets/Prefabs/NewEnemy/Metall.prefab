@@ -202,7 +202,7 @@ MonoBehaviour:
   hasHealthBar: 1
   scorePoints: 500
   currentHealth: 0
-  maxHealth: 1
+  maxHealth: 3
   contactDamage: 1
   explosionDamage: 0
   bulletDamage: 10
