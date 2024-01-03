@@ -32,4 +32,8 @@ public class GameManagement : MonoBehaviour
     {
         SceneManager.LoadScene("level_3");
     }
+    public void changeScene4()
+    {
+        SceneManager.LoadScene("boss_fight");
+    }
 }
