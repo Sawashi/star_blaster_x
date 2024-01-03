@@ -7,7 +7,7 @@ public class MoveToNextLevel : MonoBehaviour
     public int nextSceneLoad;
     void Start()
     {
-        nextSceneLoad= SceneManager.GetActiveScene().buildIndex + 1;
+        nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
