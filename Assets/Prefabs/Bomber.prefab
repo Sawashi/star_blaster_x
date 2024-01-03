@@ -317,6 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   speed: 1
+  damage: 10
   attackRange: {fileID: 5740463145839341742}
   detectRange: {fileID: 2674120514544691305}
   damageZone: {fileID: 3063474337044986952}
@@ -346,6 +347,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 0179a7fa86396394cad671b078e45bc0, type: 2}
   duration: 0.1
+  playerDuration: 0.5
+  isPlayer: 0
+  renderer: {fileID: 950592758114276943}
 --- !u!1 &7118092046445567073
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +360,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6636362315978878896}
   - component: {fileID: 3063474337044986952}
+  - component: {fileID: 1239943489403772018}
   m_Layer: 0
   m_Name: DamageZone
   m_TagString: DamageZone
@@ -413,6 +418,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &1239943489403772018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118092046445567073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9a510a273f7ec4db289ac51a1d8d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7127327792841836569
 GameObject:
   m_ObjectHideFlags: 0

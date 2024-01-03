@@ -9,13 +9,13 @@ public class DamageFlash : MonoBehaviour
     [SerializeField] float playerDuration = 0.5f;
     [SerializeField] bool isPlayer;
 
-    private SpriteRenderer renderer;
+    [SerializeField] SpriteRenderer renderer;
+
     private Material originalMaterial;
-    private Coroutine flashRoutine  ;
+    private Coroutine flashRoutine;
     // Start is called before the first frame update
     void Start()
     {
-        renderer = GetComponent<SpriteRenderer>();
         originalMaterial = renderer.material;
     }
 

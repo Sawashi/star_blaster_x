@@ -327,7 +327,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 100
+  invincibleDuration: 0.5
   healthBar: {fileID: 0}
   arm: {fileID: 8124078181689893443}
 --- !u!114 &845577112917608645
@@ -475,6 +476,7 @@ MonoBehaviour:
   duration: 0.1
   playerDuration: 0.5
   isPlayer: 1
+  renderer: {fileID: 906251232270651946}
 --- !u!1001 &1049909778286762803
 PrefabInstance:
   m_ObjectHideFlags: 0

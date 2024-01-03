@@ -291,6 +291,7 @@ MonoBehaviour:
   duration: 0.1
   playerDuration: 0.5
   isPlayer: 0
+  renderer: {fileID: 5172626501654380708}
 --- !u!114 &3649779313781170517
 MonoBehaviour:
   m_ObjectHideFlags: 0
