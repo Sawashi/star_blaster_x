@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
 {
     private Animator animator;
     private Rigidbody2D rigidbody;
+    private DamageFlash flashEffect;
     private bool isRunning = false;
 
     private bool isShooting = false;
     public bool isFacingRight = true;
     public bool isFalling = false;
+    private bool isInvincible = false;
 
     public Vector2 boxSize;
     public float raycastDistance;
@@ -23,7 +25,9 @@ public class Player : MonoBehaviour
     public LayerMask pickupLayer;
 
     public int maxHealth = 100;
-    public int currentHealth;
+    public int currentHealth; 
+    public float invincibleDuration = 0.5f;
+    private float invincibleTimer = 0;
     public HealthBar healthBar;
     public ArmShooting arm;
    
@@ -33,6 +37,7 @@ public class Player : MonoBehaviour
     {
         animator = transform.GetChild(0).GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
+        flashEffect = GetComponent<DamageFlash>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -54,10 +59,15 @@ public class Player : MonoBehaviour
         if (isShooting) {
             arm.Shoot();
         }
+        if (isInvincible) {
+            invincibleTimer -= Time.deltaTime;
+            if(invincibleTimer <= 0) {
+                isInvincible = false;
+            }
+        } 
         if (Input.GetKeyDown(KeyCode.V))
         {
             TakeDamage(10);
-            
         }
     }
     
@@ -179,7 +189,14 @@ public class Player : MonoBehaviour
     }
     void TakeDamage(int damage)
     {
+        if (isInvincible) return;
+
         currentHealth -= damage;
+        flashEffect.Flash();
+        isInvincible = true;
+        invincibleTimer = invincibleDuration;
+
         healthBar.SetHealth(currentHealth);
+
     }
 }

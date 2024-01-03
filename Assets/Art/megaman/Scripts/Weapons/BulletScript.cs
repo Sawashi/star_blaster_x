@@ -184,7 +184,6 @@ public class BulletScript : MonoBehaviour
                         PlayerController player = other.gameObject.GetComponent<PlayerController>();
                         if (player != null)
                         {
-                            player.HitSide(transform.position.x > player.transform.position.x);
                             player.TakeDamage(this.damage);
                         }
                         break;

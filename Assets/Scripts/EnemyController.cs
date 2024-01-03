@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     BoxCollider2D box2d;
     Rigidbody2D rb2d;
     SpriteRenderer sprite;
+    DamageFlash flashEffect;
 
     bool isInvincible;
 
@@ -81,6 +82,7 @@ public class EnemyController : MonoBehaviour
         box2d = GetComponent<BoxCollider2D>();
         rb2d = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        flashEffect = GetComponent<DamageFlash>();
     }
 
     // Start is called before the first frame update
@@ -134,6 +136,7 @@ public class EnemyController : MonoBehaviour
                 // update health value and energy bar
                 currentHealth -= damage;
                 currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+                flashEffect.Flash();
                 if (hasHealthBar && UIEnergyBars.Instance != null)
                 {
                     UIEnergyBars.Instance.SetValue(UIEnergyBars.EnergyBars.EnemyHealth, currentHealth / (float)maxHealth);

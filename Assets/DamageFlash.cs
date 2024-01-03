@@ -6,6 +6,8 @@ public class DamageFlash : MonoBehaviour
 {
     [SerializeField] Material flashMaterial;
     [SerializeField] float duration = 0.1f;
+    [SerializeField] float playerDuration = 0.5f;
+    [SerializeField] bool isPlayer;
 
     private SpriteRenderer renderer;
     private Material originalMaterial;
@@ -21,15 +23,32 @@ public class DamageFlash : MonoBehaviour
         if(flashRoutine != null) {
             StopCoroutine(flashRoutine);
         }
+        if (isPlayer) {
+            flashRoutine = StartCoroutine(FlashPlayerRoutine(playerDuration));
 
-        flashRoutine = StartCoroutine(FlashRoutine(duration));
+        } else {
+            flashRoutine = StartCoroutine(FlashRoutine(duration));
+
+        }
     }
 
     IEnumerator FlashRoutine(float timer) {
         renderer.material = flashMaterial;
 
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(timer);
 
+        renderer.material = originalMaterial;
+
+        flashRoutine = null;
+    }
+
+    IEnumerator FlashPlayerRoutine(float timer) {
+        renderer.material = flashMaterial;
+        yield return new WaitForSeconds(timer * 0.4f);
+        renderer.material = originalMaterial;
+        yield return new WaitForSeconds(timer * 0.2f);
+        renderer.material = flashMaterial;
+        yield return new WaitForSeconds(timer * 0.4f);
         renderer.material = originalMaterial;
 
         flashRoutine = null;

@@ -207,6 +207,8 @@ GameObject:
   - component: {fileID: 3204241938196345776}
   - component: {fileID: 1302288021672521591}
   - component: {fileID: 3204241938196345675}
+  - component: {fileID: 5163324069541880614}
+  - component: {fileID: 3390418881234113306}
   m_Layer: 10
   m_Name: BombMan
   m_TagString: NewEnemy
@@ -473,3 +475,31 @@ MonoBehaviour:
   - {x: 2, y: 4.5}
   - {x: 3, y: 5}
   moveDirection: 0
+--- !u!114 &5163324069541880614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3204241938196345777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d5886cd2c71354cba05d3be04f9ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 0179a7fa86396394cad671b078e45bc0, type: 2}
+  duration: 0.1
+  playerDuration: 0.5
+  isPlayer: 0
+--- !u!114 &3390418881234113306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3204241938196345777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc61e505da0fa341bed9e69a09e8d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
