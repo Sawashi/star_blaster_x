@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -227,7 +227,9 @@ public class Player : MonoBehaviour
         else
         {
             Instantiate(deathParticle, transform.position, Quaternion.identity);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Destroy(gameObject);
+
         }
         flashEffect.Flash();
         healthBar.SetHealth(currentHealth);
