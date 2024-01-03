@@ -280,11 +280,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2876493305734873427, guid: 19f7f49d5ee40e6459d01592bbf73de4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.83
+      value: 83
       objectReference: {fileID: 0}
     - target: {fileID: 2876493305734873427, guid: 19f7f49d5ee40e6459d01592bbf73de4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.04
+      value: -5.9
       objectReference: {fileID: 0}
     - target: {fileID: 2876493305734873427, guid: 19f7f49d5ee40e6459d01592bbf73de4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10727,11 +10727,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1451288337862928124, guid: 673a67e034313324b9565d42886c4c72, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.261004
+      value: 90.56899
       objectReference: {fileID: 0}
     - target: {fileID: 1451288337862928124, guid: 673a67e034313324b9565d42886c4c72, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.174379
+      value: -6.034379
       objectReference: {fileID: 0}
     - target: {fileID: 1617110190079948099, guid: 673a67e034313324b9565d42886c4c72, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10779,11 +10779,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4770856467599037062, guid: 673a67e034313324b9565d42886c4c72, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.261004
+      value: 90.56899
       objectReference: {fileID: 0}
     - target: {fileID: 4770856467599037062, guid: 673a67e034313324b9565d42886c4c72, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.174379
+      value: -6.034379
       objectReference: {fileID: 0}
     - target: {fileID: 4974323033073677669, guid: 673a67e034313324b9565d42886c4c72, type: 3}
       propertyPath: m_Follow
@@ -11838,6 +11838,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 305289323462485427, guid: 9b7ad2f6b4e7e844ea14761aa7305612, type: 3}
+      propertyPath: musicSounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d8247e21a56e08846b35892bb3bd3dab, type: 3}
     - target: {fileID: 3500793087858879768, guid: 9b7ad2f6b4e7e844ea14761aa7305612, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.5395837

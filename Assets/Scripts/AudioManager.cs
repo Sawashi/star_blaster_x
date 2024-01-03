@@ -2,7 +2,8 @@
 using System;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour {
+public class AudioManager : MonoBehaviour
+{
     public static AudioManager Instance;
 
     [SerializeField] AudioSource musicSource;
@@ -10,34 +11,48 @@ public class AudioManager : MonoBehaviour {
 
     public Sound[] musicSounds, sfxSounds;
 
-    private void Awake() {
+    private void Awake()
+    {
 
-        if (Instance == null) {
+        if (Instance == null)
+        {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        } else {
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }
-    private void Start() {
-        PlayMusic("BG");    
+    private void Start()
+    {
+        PlayMusic("BG");
     }
 
-    public void PlayMusic(string name) {
+    public void PlayMusic(string name)
+    {
         Sound s = Array.Find(musicSounds, x => x.name == name);
 
-        if (s != null) {
+        if (s != null)
+        {
             musicSource.clip = s.clip;
             musicSource.Play();
         }
     }
 
-    public void PlaySFX(string name) {
+    public void PlaySFX(string name)
+    {
         Sound s = Array.Find(sfxSounds, x => x.name == name);
 
-        if (s != null) {
+        if (s != null)
+        {
             sfxSource.PlayOneShot(s.clip);
         }
+    }
+    //stop music
+    public void StopMusic()
+    {
+        musicSource.Stop();
     }
 
 
