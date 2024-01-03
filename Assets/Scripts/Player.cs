@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public ParticleSystem deathParticle;
     private Animator animator;
     private Rigidbody2D rigidbody;
     private DamageFlash flashEffect;
@@ -192,11 +193,14 @@ public class Player : MonoBehaviour
         if (isInvincible) return;
 
         currentHealth -= damage;
-        flashEffect.Flash();
-        isInvincible = true;
-        invincibleTimer = invincibleDuration;
-
+        if (currentHealth > 0) {
+            isInvincible = true;
+            invincibleTimer = invincibleDuration;
+        } else {
+            Instantiate(deathParticle, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
         healthBar.SetHealth(currentHealth);
-
+        flashEffect.Flash();
     }
 }
