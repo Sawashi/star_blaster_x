@@ -282,7 +282,7 @@ MonoBehaviour:
   maxHealth: 3
   contactDamage: 1
   explosionDamage: 0
-  bulletDamage: 2
+  bulletDamage: 5
   bulletSpeed: 3
   bonusItemType: 1
   bonusBallColor: 0

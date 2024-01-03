@@ -396,8 +396,8 @@ MonoBehaviour:
   scorePoints: 0
   currentHealth: 0
   maxHealth: 28
-  contactDamage: 4
-  explosionDamage: 0
+  contactDamage: 25
+  explosionDamage: 35
   bulletDamage: 0
   bulletSpeed: 0
   bonusItemType: 9

@@ -25,8 +25,8 @@ public class BombScript : MonoBehaviour
 
     // default the settings for use by the player
     [Header("Bomb Damage")]
-    [SerializeField] int contactDamage = 0;
-    [SerializeField] int explosionDamage = 4;
+    [SerializeField] int contactDamage = 20;
+    [SerializeField] int explosionDamage = 35;
 
     [Header("Audio Clips")]
     [SerializeField] AudioClip explosionClip;
@@ -276,6 +276,27 @@ public class BombScript : MonoBehaviour
                 Explode();
             }
         }
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            // look for an explosion delay and start the timer
+            if (!startTimer && explodeDelay > 0)
+            {
+                startTimer = true;
+                explodeTimer = explodeDelay;
+            }
+
+            // if there is no delay then destroy the bomb immediately
+            if (explodeDelay == 0)
+            {
+                Explode();
+                Debug.Log("Damage no: " + this.explosionDamage);
+                Player player = other.gameObject.GetComponent<Player>();
+                if (player != null)
+                {
+                    player.TakeDamage(35);
+                }
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -296,13 +317,9 @@ public class BombScript : MonoBehaviour
                         }
                         break;
                     case "Player":
-                        // player controller will apply the damage the bomb can cause
-                        PlayerController player = other.gameObject.GetComponent<PlayerController>();
-                        if (player != null)
-                        {
-                            player.HitSide(transform.position.x > player.transform.position.x);
-                            player.TakeDamage(this.contactDamage);
-                        }
+                        Debug.Log("Damage dinh: " + this.contactDamage);
+                        Player player = other.gameObject.GetComponent<Player>();
+                        player.TakeDamage(15);
                         break;
                 }
             }

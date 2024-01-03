@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
@@ -18,7 +19,7 @@ public class BulletScript : MonoBehaviour
     Color bulletColor;
     RigidbodyConstraints2D rb2dConstraints;
 
-    public int damage = 1;
+    public int damage = 20;
 
     [SerializeField] float bulletSpeed;
     [SerializeField] Vector2 bulletDirection;
@@ -166,30 +167,38 @@ public class BulletScript : MonoBehaviour
     {
         foreach (string tag in collideWithTags)
         {
-            // check for collision with this tag
-            if (other.gameObject.CompareTag(tag))
+            if (other.gameObject.tag == "Ground")
             {
-                switch (tag)
+                Destroy(gameObject, 0f);
+            }
+            else
+            {
+                // check for collision with this tag
+                if (other.gameObject.CompareTag(tag))
                 {
-                    case "Enemy":
-                        // enemy controller will apply the damage player bullet can cause
-                        EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
-                        if (enemy != null)
-                        {
-                            enemy.TakeDamage(this.damage, "Bullet");
-                        }
-                        break;
-                    case "Player":
-                        // player controller will apply the damage enemy bullet can cause
-                        PlayerController player = other.gameObject.GetComponent<PlayerController>();
-                        if (player != null)
-                        {
-                            player.TakeDamage(this.damage);
-                        }
-                        break;
+                    switch (tag)
+                    {
+                        case "Enemy":
+                            // enemy controller will apply the damage player bullet can cause
+                            EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
+                            if (enemy != null)
+                            {
+                                enemy.TakeDamage(this.damage, "Bullet");
+                            }
+                            break;
+                        case "Player":
+                            Player player = other.gameObject.GetComponent<Player>();
+                            if (player != null)
+                            {
+                                player.TakeDamage(this.damage);
+                            }
+                            break;
+                        case "Ground":
+                            Destroy(gameObject, 0f);
+                            break;
+                    }
+                    Destroy(gameObject, 0.01f);
                 }
-                // remove the bullet - just not immediately
-                Destroy(gameObject, 0.01f);
             }
         }
     }
