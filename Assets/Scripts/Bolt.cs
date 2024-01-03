@@ -25,7 +25,7 @@ public class Bolt : Bullet
         {
             rigidbody.velocity = Vector2.zero;
             animator.SetBool("Hit", true);
-            collision.gameObject.GetComponent<EnemyController>().takeEnemyHealth(1, "Bolt");
+            collision.gameObject.GetComponent<EnemyController>().takeEnemyHealth(2, "Bolt");
             collider.enabled = false;
         }
     }
