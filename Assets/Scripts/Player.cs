@@ -26,12 +26,12 @@ public class Player : MonoBehaviour
     public LayerMask pickupLayer;
 
     public int maxHealth = 100;
-    public int currentHealth; 
+    public int currentHealth;
     public float invincibleDuration = 0.5f;
     private float invincibleTimer = 0;
     public HealthBar healthBar;
     public ArmShooting arm;
-   
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,32 +46,41 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rigidbody.velocity.y < 0.1) {
+        if (rigidbody.velocity.y < 0.1)
+        {
             isFalling = true;
-        } else {
+        }
+        else
+        {
             isFalling = false;
         }
-        if (IsGrounded()) {
+        if (IsGrounded())
+        {
             animator.SetBool("isFalling", false);
-        } else {
+        }
+        else
+        {
             animator.SetBool("isFalling", true);
         }
 
-        if (isShooting) {
+        if (isShooting)
+        {
             arm.Shoot();
         }
-        if (isInvincible) {
+        if (isInvincible)
+        {
             invincibleTimer -= Time.deltaTime;
-            if(invincibleTimer <= 0) {
+            if (invincibleTimer <= 0)
+            {
                 isInvincible = false;
             }
-        } 
+        }
         if (Input.GetKeyDown(KeyCode.V))
         {
             TakeDamage(10);
         }
     }
-    
+
 
     private void FixedUpdate()
     {
@@ -126,24 +135,32 @@ public class Player : MonoBehaviour
     }
 
 
-    public void Movement(InputAction.CallbackContext context) {
+    public void Movement(InputAction.CallbackContext context)
+    {
         float val = context.ReadValue<float>();
-        if (val == 0) {
+        if (val == 0)
+        {
             isRunning = false;
             animator.SetBool("isRunning", isRunning);
-        } else {
+        }
+        else
+        {
             isRunning = true;
             animator.SetBool("isRunning", isRunning);
-            if (val < 0) {
-                if (isFacingRight) {
+            if (val < 0)
+            {
+                if (isFacingRight)
+                {
                     transform.rotation = Quaternion.Euler(0, 180, 0);
                 }
                 isFacingRight = false;
 
             }
 
-            if (val > 0) {
-                if (!isFacingRight) {
+            if (val > 0)
+            {
+                if (!isFacingRight)
+                {
                     transform.rotation = Quaternion.Euler(0, 0, 0);
 
                 }
@@ -153,8 +170,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Jump(InputAction.CallbackContext context) {
-        if (context.performed && IsGrounded()) {
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.performed && IsGrounded())
+        {
             Vector2 dir = rigidbody.velocity;
             dir.y = 5;
             rigidbody.velocity = dir;
@@ -162,23 +181,29 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Shoot(InputAction.CallbackContext context) {
-        if (context.started) {
+    public void Shoot(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
             isShooting = true;
         }
 
-        if (context.canceled) {
+        if (context.canceled)
+        {
             isShooting = false;
             arm.StopShooting();
         }
     }
 
-    public void Interact(InputAction.CallbackContext context) {
-        if (context.started) {
+    public void Interact(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
             Debug.Log("Interact");
 
             RaycastHit2D hit = Physics2D.BoxCast(transform.position, pickupSize, 0, -transform.up, pickupDistance, pickupLayer);
-            if (hit.collider != null) {
+            if (hit.collider != null)
+            {
                 GunPickup pickup = hit.collider.GetComponent<GunPickup>();
                 arm.SwitchWeapon(pickup.GetWeapon());
                 pickup.DestroyPickup();
@@ -191,13 +216,16 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        Debug.Log("Current health - damage: " + currentHealth + " - " + damage);
         if (isInvincible) return;
-
         currentHealth -= damage;
-        if (currentHealth > 0) {
+        if (currentHealth > 0)
+        {
             isInvincible = true;
             invincibleTimer = invincibleDuration;
-        } else {
+        }
+        else
+        {
             Instantiate(deathParticle, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

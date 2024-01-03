@@ -230,13 +230,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freezeEnemy: 0
-  hasHealthBar: 0
+  hasHealthBar: 1
   scorePoints: 5000
   currentHealth: 0
   maxHealth: 10
   contactDamage: 4
   explosionDamage: 0
-  bulletDamage: 2
+  bulletDamage: 15
   bulletSpeed: 3
   bonusItemType: 1
   bonusBallColor: 3

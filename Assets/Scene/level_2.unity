@@ -450,6 +450,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 174436232}
+    - target: {fileID: 5208694446355298877, guid: d2a26dee02a63674a95137f1c8bc5e5c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -181
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208694446355298877, guid: d2a26dee02a63674a95137f1c8bc5e5c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 107
+      objectReference: {fileID: 0}
     - target: {fileID: 6322295142276900751, guid: d2a26dee02a63674a95137f1c8bc5e5c, type: 3}
       propertyPath: m_Name
       value: HealthBar
