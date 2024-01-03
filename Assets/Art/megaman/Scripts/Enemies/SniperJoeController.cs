@@ -212,7 +212,7 @@ public class SniperJoeController : MonoBehaviour
         bullet.GetComponent<BulletScript>().Shoot();
 
         // play only one bullet sound
-        SoundManager.Instance.Play(enemyController.shootBulletClip);
+        //SoundManager.Instance.Play(enemyController.shootBulletClip);
     }
 
     // block any player attacks

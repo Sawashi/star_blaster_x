@@ -229,6 +229,7 @@ public class Player : MonoBehaviour
             Instantiate(deathParticle, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
+        flashEffect.Flash();
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {
