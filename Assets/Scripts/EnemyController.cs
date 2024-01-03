@@ -144,7 +144,7 @@ public class EnemyController : MonoBehaviour
                 // play taking damage sound clip
                 if (damageClip != null)
                 {
-                    //SoundManager.Instance.Play(damageClip);
+                    SoundManager.Instance.Play(damageClip);
                 }
             }
             // no more health means defeat
@@ -158,7 +158,7 @@ public class EnemyController : MonoBehaviour
             // block attack sound - dink!
             if (blockAttackClip != null)
             {
-                //SoundManager.Instance.Play(blockAttackClip);
+                SoundManager.Instance.Play(blockAttackClip);
             }
         }
     }
