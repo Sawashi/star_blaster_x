@@ -10,6 +10,7 @@ public class BombManController : MonoBehaviour
     Rigidbody2D rb2d;
     SpriteRenderer sprite;
     EnemyController enemyController;
+    public GameObject winTeleport;
 
     bool isFacingRight;
     bool isGrounded;
@@ -505,6 +506,10 @@ public class BombManController : MonoBehaviour
         // event is called from enemy controller
         // do something when this enemy is defeated
         // as an example if a bomb happens to be in motion then destroy it
+        if (winTeleport)
+        {
+            winTeleport.SetActive(true);
+        }
         bomb = GameObject.Find(bombPrefab.name + "(" + gameObject.name + ")");
         if (bomb != null)
         {
