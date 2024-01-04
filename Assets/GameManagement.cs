@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManagement : MonoBehaviour
 {
     // Start is called before the first frame update
-   public Button[] lvButtons;
-   
-    
+    public Button[] lvButtons;
+
     private void Start()
     {
         int levelAt = PlayerPrefs.GetInt("levelAt", 2);

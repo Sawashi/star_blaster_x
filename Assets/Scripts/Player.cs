@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
         flashEffect = GetComponent<DamageFlash>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-      
     }
 
     // Update is called once per frame
