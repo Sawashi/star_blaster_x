@@ -51,6 +51,16 @@ MonoBehaviour:
   musicSounds:
   - name: BG
     clip: {fileID: 8300000, guid: f071bdae09654274f85a7e2492d9c0f7, type: 3}
+  - name: menu
+    clip: {fileID: 8300000, guid: b93252a7c6c768844886f6aea851f2d1, type: 3}
+  - name: lv2
+    clip: {fileID: 8300000, guid: 3ad4543b770cc13499d92a190a28969e, type: 3}
+  - name: lv3
+    clip: {fileID: 8300000, guid: f63c35e21f4e7674d948ec5296702f06, type: 3}
+  - name: boss
+    clip: {fileID: 8300000, guid: da1a37a47dbfcb74f8f07d85dc936bb0, type: 3}
+  - name: LevelSelect
+    clip: {fileID: 8300000, guid: f48ce417e6a20a34694b69dd27a893fa, type: 3}
   sfxSounds:
   - name: Player Death
     clip: {fileID: 8300000, guid: 1b5f2f63f3669c344b4a5ebefae6ed34, type: 3}
