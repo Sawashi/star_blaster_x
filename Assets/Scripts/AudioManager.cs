@@ -79,6 +79,9 @@ public class AudioManager : MonoBehaviour
             case "boss_fight":
                 PlayMusic("boss");
                 break;
+            case "Win_Scene":
+                PlayMusic("win");
+                break;
             default:
                 PlayMusic("menu");
                 break;
