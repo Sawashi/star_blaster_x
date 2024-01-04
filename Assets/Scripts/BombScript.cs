@@ -181,7 +181,11 @@ public class BombScript : MonoBehaviour
             Vector3 bombPos = sourcePosition;
             Vector3 playerPos = targetPosition;
             if (targetOffset != 0) playerPos.x += targetOffset;
-            rb2d.velocity = UtilityFunctions.CalculateLaunchData(bombPos, playerPos, height, gravity).initialVelocity;
+            Vector2 t = UtilityFunctions.CalculateLaunchData(bombPos, playerPos, height, gravity).initialVelocity;
+            if (float.IsNaN(t.x) || float.IsNaN(t.y)){
+                return;
+            }
+            rb2d.velocity = t;
         }
         else
         {

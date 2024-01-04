@@ -13,7 +13,8 @@ public class MoveToNextLevel : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(nextSceneLoad);
+            //SceneManager.LoadScene(nextSceneLoad);
+            SceneLoader.Instance.LoadScene(nextSceneLoad);
             if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
             {
                 PlayerPrefs.SetInt("levelAt", nextSceneLoad);

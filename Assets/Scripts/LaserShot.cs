@@ -16,12 +16,10 @@ public class LaserShot : Bullet
 
             }
         }
-        if (collision.gameObject.tag == "NewEnemy")
+       else if (collision.gameObject.tag == "NewEnemy")
         {
             rigidbody.velocity = Vector2.zero;
-            animator.SetBool("Hit", true);
-            collision.gameObject.GetComponent<EnemyController>().takeEnemyHealth(5, "Laser");
-            collider.enabled = false;
+            collision.gameObject.GetComponent<EnemyController>().TakeDamage((int)damage);
         }
     }
 

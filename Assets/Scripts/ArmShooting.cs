@@ -24,6 +24,7 @@ public class ArmShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0) return;
         Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         aimDir = mousePos - transform.position;

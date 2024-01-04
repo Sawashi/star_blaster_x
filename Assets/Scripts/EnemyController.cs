@@ -273,8 +273,8 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             // colliding with player inflicts damage and takes contact damage away from health
-            PlayerController player = other.gameObject.GetComponent<PlayerController>();
-            player.HitSide(transform.position.x > player.transform.position.x);
+            Player player = other.gameObject.GetComponent<Player>();
+            //player.HitSide(transform.position.x > player.transform.position.x);
             player.TakeDamage(this.contactDamage);
         }
     }

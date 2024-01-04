@@ -2,9 +2,13 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
+
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
+
+    public AudioMixer mixer;
 
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource sfxSource;
@@ -23,6 +27,14 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+		if (PlayerPrefs.HasKey("Volume") || PlayerPrefs.HasKey("SFX") || PlayerPrefs.HasKey("Music")) {
+            mixer.SetFloat("Volume", PlayerPrefs.GetFloat("Volume"));
+
+            mixer.SetFloat("SFX", PlayerPrefs.GetFloat("SFX"));
+
+            mixer.SetFloat("Music", PlayerPrefs.GetFloat("Music"));
+
+        } 
     }
     private void Start()
     {

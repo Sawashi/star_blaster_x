@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Time.timeScale == 0) return;
         if (rigidbody.velocity.y < 0.1)
         {
             isFalling = true;
@@ -239,6 +241,7 @@ public class Player : MonoBehaviour
         {
             Instantiate(deathParticle, transform.position, Quaternion.identity);
             //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneLoader.Instance.ReloadScene();
             Destroy(gameObject);
 
         }

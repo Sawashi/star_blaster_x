@@ -6,7 +6,13 @@ public class Bolt : Bullet
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "NewEnemy") {
+            rigidbody.velocity = Vector2.zero;
+            animator.SetBool("Hit", true);
+            collision.gameObject.GetComponent<EnemyController>().TakeDamage((int)damage);
+            collider.enabled = false;
+        }
+        else if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Enemy")
         {
             rigidbody.velocity = Vector2.zero;
             animator.SetBool("Hit", true);
@@ -21,12 +27,6 @@ public class Bolt : Bullet
                 }
             }
         }
-        if (collision.gameObject.tag == "NewEnemy")
-        {
-            rigidbody.velocity = Vector2.zero;
-            animator.SetBool("Hit", true);
-            collision.gameObject.GetComponent<EnemyController>().takeEnemyHealth(2, "Bolt");
-            collider.enabled = false;
-        }
+       
     }
 }
