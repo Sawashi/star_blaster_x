@@ -15,7 +15,7 @@ public class MambuController : MonoBehaviour
     float closedTimer;
     float shootTimer;
 
-    // flag to enable enemy ai logic
+    
     [SerializeField] bool enableAI;
 
     public float moveSpeed = 1f;
@@ -31,17 +31,16 @@ public class MambuController : MonoBehaviour
 
     void Awake()
     {
-        // get components from EnemyController
+       
         enemyController = GetComponent<EnemyController>();
         animator = enemyController.GetComponent<Animator>();
         rb2d = enemyController.GetComponent<Rigidbody2D>();
     }
 
-    // Start is called before the first frame update
+    
     void Start()
     {
-        // sprite sheet images face right
-        // switch to facing left if it's set
+        
         isFacingRight = true;
         if (moveDirection == MoveDirections.Left)
         {
@@ -49,41 +48,23 @@ public class MambuController : MonoBehaviour
             enemyController.Flip();
         }
 
-        // set initial state
+        
         SetState(mambuState);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (enemyController.freezeEnemy)
         {
-            // add anything here to happen while frozen i.e. time compensations
+            
             return;
         }
 
-        // do Mambu ai logic if it's enabled
+       
         if (enableAI)
         {
-            // Mambu has two states - Closed and Open - and alternates between them while in play
-            //   Closed - invincible (set in animation) and moves across the screen for closedTimer time 
-            //            when closedTimer expires then switches to his Open state and sets two timers 
-            //            openTimer (how long his shell remains open) and 
-            //            shootTimer (how long to wait before shooting his 8 bullets) 
-            //            an alternative to the shootTimer approach could be to define a length to his 
-            //            Open animation and add another animation event to do the shooting - I took this
-            //            approach when I created Screw Driver because he does multiple firings - but Mambu 
-            //            is a single shot so I just use a timer instead of dragging out the animation
-            //     Open - vulnerable to bullets (set in animation) and doesn't move on screen. animation 
-            //            switches to Open, shootTimer counts down then shoots his bullets when time is up. 
-            //            shootTimer is half of how long his shell stays open, so being one second open 
-            //            he fires at half a second in. there is a flag isShooting that is false initially 
-            //            and once he fires gets set to true so he doesn't keep firing - this ensures a single 
-            //            occurrence. openTimer counts down while in this state and once expires switches to 
-            //            his Closed state, sets closedTimer, and resets isShooting back to false.
-            // Note: the invincibility doesn't have to be set via animation events, they could be set during 
-            //       state changes by calling enemyController.Invincible(bool); however I wanted to show 
-            //       how to use the animations events for learning purposes. 
+           
             switch (mambuState)
             {
                 case MambuState.Closed:
@@ -120,15 +101,15 @@ public class MambuController : MonoBehaviour
 
     public void EnableAI(bool enable)
     {
-        // enable enemy ai logic
+        
         this.enableAI = enable;
     }
 
     public void SetMoveDirection(MoveDirections direction)
     {
-        // we can call this to change the moving direction in real-time
+        
         moveDirection = direction;
-        // flip the facing side if it's needed
+        
         if (moveDirection == MoveDirections.Left)
         {
             if (isFacingRight)
@@ -149,13 +130,13 @@ public class MambuController : MonoBehaviour
 
     public void SetState(MambuState state)
     {
-        // set mambu state
+        
         mambuState = state;
 
-        // not shooting...yet
+        
         isShooting = false;
 
-        // set up the state timer we're starting with
+        
         if (mambuState == MambuState.Closed)
         {
             closedTimer = closedDelay;
@@ -168,7 +149,7 @@ public class MambuController : MonoBehaviour
 
     private void ShootBullet()
     {
-        // initialize the bullet vectors
+        
         GameObject[] bullets = new GameObject[8];
         Vector2[] bulletVectors = {
             new Vector2(-1f, 0),            // Left
@@ -180,7 +161,7 @@ public class MambuController : MonoBehaviour
             new Vector2(0.75f, -0.75f),     // Right-Down
             new Vector2(0.75f, 0.75f)       // Right-Up
         };
-        // initialize and shoot all the bullets
+        
         for (int i = 0; i < bullets.Length; i++)
         {
             bullets[i] = Instantiate(enemyController.bulletPrefab);
@@ -194,18 +175,17 @@ public class MambuController : MonoBehaviour
             bullets[i].GetComponent<BulletScript>().SetDestroyDelay(5f);
             bullets[i].GetComponent<BulletScript>().Shoot();
         }
-        // play only one bullet sound
+        
         SoundManager.Instance.Play(enemyController.shootBulletClip);
     }
 
-    // we call these functions from our two animations
-    // Closed - make'em invincible
+    
     private void StartInvincibleAnimation()
     {
         enemyController.Invincible(true);
     }
 
-    // Open - beware the Mega Buster!
+    
     private void StopInvincibleAnimation()
     {
         enemyController.Invincible(false);

@@ -35,4 +35,8 @@ public class GameManagement : MonoBehaviour
     {
         SceneManager.LoadScene("boss_fight");
     }
+    public void changeSceneo()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }

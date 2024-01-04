@@ -214,12 +214,12 @@ public class EnemyController : MonoBehaviour
 
     void Defeat()
     {
-        // invoke defeat event
+      
         DefeatEvent.Invoke();
-        // play explosion animation, remove enemy, give player score points
+        
         StartDefeatAnimation();
 
-        //GameManager.Instance.AddScorePoints(this.scorePoints);
+        
     }
 
     public void FreezeEnemy(bool freeze)
